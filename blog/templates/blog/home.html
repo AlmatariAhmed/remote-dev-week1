@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>مدونتي — اليمن والصين يداً بيد</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>مرحباً بك في مدونتي</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <div style="border-bottom: 1px solid #eee; margin: 20px 0;">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content|truncatewords:30 }}</p>
+                <small>نشر في: {{ post.published_date|date:"Y-m-d" }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>لا توجد منشورات بعد.</p>
+    {% endif %}
+</body>
+</html>
