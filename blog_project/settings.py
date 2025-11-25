@@ -122,3 +122,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# --- مؤقت لإنشاء superuser على Render ---
+import os
+
+if 'ON_RENDER' in os.environ:
+    import django
+    django.setup()
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'SecurePass123!')
+# --- نهاية الكود المؤقت ---
