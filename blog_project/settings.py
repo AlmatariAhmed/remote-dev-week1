@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-_-o5i+fbn!#(r2vi_dv!f@93i3qp)9$a)fg)9!5zbj1g*7a3kq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blog-app-1upm.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -125,14 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# --- مؤقت لإنشاء superuser على Render ---
-import os
 
-if 'ON_RENDER' in os.environ:
-    import django
-    django.setup()
-    from django.contrib.auth import get_user_model
-    User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@example.com', 'SecurePass123!')
-# --- نهاية الكود المؤقت ---
