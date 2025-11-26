@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ post.title }} — مدونتي</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p><em>نشر في: {{ post.published_date|date:"F d, Y" }}</em></p>
+    <div>{{ post.content|linebreaks }}</div>
+    <hr>
+    <a href="{% url 'home' %}">← العودة إلى الرئيسية</a>
+</body>
+</html>
